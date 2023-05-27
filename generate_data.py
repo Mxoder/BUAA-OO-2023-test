@@ -8,13 +8,13 @@ _ans_file = ''
 _res_file = ''
 _res_store = True
 
-books = {}
-unshelved = {}
-students = {}
+books = {}  # 已上架的书，形如 <book_num, stock>，key永远不会被清空
+unshelved = {}  # 未上架的书，形如 <book_num, stock>，整理完后会被清空
+students = {}   # 学生，形如 <id, {'B': book_set(), 'C': book_set()}>
 max_date_limit = True
 cur_date = datetime(2023, 1, 1).date()
 last_arranged_date = datetime(2023, 1, 1).date()
-waiting_list = deque()
+waiting_list = deque()  # deque of orders; order: {'stu': , 'book': }
 today_orders_count = {}  # <stu_id, orders_count>
 data_list = []
 ans_list = []
@@ -93,7 +93,7 @@ def try_to_borrow():
     else:
         stu = random.choice(list(students.keys()))
         book = random.choice(list(books.keys()))
-    # 在最开始，先处理堆积的预约
+    # 在最开始，先进行可能的整理
     handle_arrange()
     # 再加入新指令
     line = ''.join(f'[{date}] {stu} borrowed {book}')
@@ -111,7 +111,7 @@ def try_to_return():
     else:
         merged_set = students[stu]['B'].union(students[stu]['C'])
         book = random.sample(merged_set, 1)[0]
-    # 在最开始，先处理堆积的预约
+    # 在最开始，先进行可能的整理
     handle_arrange()
     # 再加入新指令
     line = ''.join(f'[{date}] {stu} returned {book}')
@@ -130,7 +130,7 @@ def try_to_smear():
     else:
         merged_set = students[stu]['B'].union(students[stu]['C'])
         book = random.sample(merged_set, 1)[0]
-    # 在最开始，先处理堆积的预约
+    # 在最开始，先进行可能的整理
     handle_arrange()
     # 再加入新指令
     line = ''.join(f'[{date}] {stu} smeared {book}')
@@ -152,7 +152,7 @@ def try_to_lose():
     else:
         merged_set = students[stu]['B'].union(students[stu]['C'])
         book = random.sample(merged_set, 1)[0]
-    # 在最开始，先处理堆积的预约
+    # 在最开始，先进行可能的整理
     handle_arrange()
     # 再加入新指令
     line = ''.join('[{0}] {1} lost {2}'.format(date, stu, book))
@@ -162,7 +162,7 @@ def try_to_lose():
 
 
 # -------------------------------后台辅助函数----------------------------------
-# 尽可能地获取一个【手上有书】的学生
+# 尽可能地【随机】获取一个【手上有书】的学生
 def get_student_with_books():
     global students
     stu = random.choice(list(students.keys()))
@@ -339,6 +339,7 @@ def prompt_res(date, someone, behavior, obj='', reason=''):
 
 
 # ------------------------主函数---------------------------
+# 用于选取的函数
 funcs = {
     try_to_borrow: 1,
     try_to_return: 1,
