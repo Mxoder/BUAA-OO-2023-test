@@ -1,4 +1,14 @@
-# BUAA-OO-2023-test
->  tests for homeworks of oo-course 2023
+# hw13 多线程评测机
 
-This branch is the master branch. You might switch to the branch corresponding to the homework and get the code-test files.
+ 
+
+## 使用方法
+
+
+
+## 注意事项
+
+
+
+## 其他说明
+
