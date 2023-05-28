@@ -1,5 +1,10 @@
 # hw13 多线程评测机
 
+<<<<<<< HEAD
+This branch is the master branch.
+
+You might **switch to the branch** corresponding to the homework and get the code-test files.
+=======
  
 
 ## 使用方法
@@ -54,3 +59,4 @@ max_threads = 10                    # 最大同时评测线程数
 2. 如果想测试同一天的多发情况，可以将指令数调为 100，这样日期会阻塞在 `2023-12-31`
 3. 如果想修改更详细的参数，例如指令的抽取权重等，可以在 `generate_data.py` 中修改
 4. 评测结果仅供参考
+>>>>>>> 2b6768c291e0c0ebf864c90ed582731507693410

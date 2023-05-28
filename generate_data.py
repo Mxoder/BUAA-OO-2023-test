@@ -41,7 +41,7 @@ def generate_students(account):
     global students
     ascii_chars = string.ascii_letters + string.digits + string.punctuation
     while len(students) < account:
-        student_id = ''.join(random.choices(ascii_chars, k=8))
+        student_id = str(random.randint(10000000, 99999999))
         if student_id not in students:
             borrowed_B = set()
             borrowed_C = set()
