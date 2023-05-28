@@ -6,36 +6,16 @@ import generate_data
 import setup
 
 # SETUP
-def get_input():
-    is_defalut = (input("使用默认设置(y/n): "))
-    if is_defalut != 'n' and is_defalut != 'N':
-        check_rounds = setup.check_rounds
-        books_account = setup.books_account
-        operations_account = setup.operations_account
-        input_store_dir = setup.input_store_dir
-        output_store_dir = setup.output_store_dir
-        ans_store_dir = setup.ans_store_dir
-        res_store_dir = setup.res_store_dir
-        clean_if_no_diff = setup.clean_if_no_diff
-        store_operation_res = setup.store_operation_res
-        max_threads = setup.max_threads
-    else : 
-        check_rounds = int(input("请输入测试轮数: "))
-        books_account = int(input("请输入图书种类数: "))
-        operations_account = int(input("请输入指令总数, 当总数大于100时, 日期会超过2023-12-31: "))
-        input_store_dir = input("请输入输入数据存放的相对路径: ")
-        output_store_dir = input("请输入程序输出存放的相对路径: ")
-        ans_store_dir = input("请输入答案存放的相对路径: ")
-        res_store_dir = input("请输入指令的详细模拟结果存放的相对路径: ")
-        temp = (input("是否清除ac数据(y/n): "))
-        clean_if_no_diff = (temp != 'N' and temp != "n")
-        temp = (input("是否保存指令的详细模拟结果(y/n): "))
-        store_operation_res = (temp != 'N' and temp != "n")
-        max_threads = int(input("请输入线程数: "))
-    return check_rounds, books_account, operations_account, input_store_dir, output_store_dir, ans_store_dir, res_store_dir, clean_if_no_diff, store_operation_res, max_threads
-  
-check_rounds, books_account, operations_account, input_store_dir, output_store_dir, ans_store_dir, res_store_dir, clean_if_no_diff, store_operation_res, max_threads = get_input()
-
+check_rounds = setup.check_rounds
+books_account = setup.books_account
+operations_account = setup.operations_account
+input_store_dir = setup.input_store_dir
+output_store_dir = setup.output_store_dir
+ans_store_dir = setup.ans_store_dir
+res_store_dir = setup.res_store_dir
+clean_if_no_diff = setup.clean_if_no_diff
+store_operation_res = setup.store_operation_res
+max_threads = setup.max_threads
 
 jars = []
 diff_res = {}
