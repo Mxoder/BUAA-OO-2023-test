@@ -1,12 +1,5 @@
 # hw13 多线程评测机
 
-<<<<<<< HEAD
-This branch is the master branch.
-
-You might **switch to the branch** corresponding to the homework and get the code-test files.
-=======
- 
-
 ## 使用方法
 
 ### 可执行文件(.exe)
